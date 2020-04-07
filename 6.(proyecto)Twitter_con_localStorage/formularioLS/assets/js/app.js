@@ -3,7 +3,7 @@ const listaTweets = document.getElementById('lista-tweets');
 
 // event listeners
 eventListeners(); // ponemos los eventlisteners en una funcion para que no sean globales y no se mesclen con otros, es buena practica
-function eventListeners(e) {
+function eventListeners() {
   // cuando se envie el formulario
   document
     .querySelector('#formulario')
@@ -24,18 +24,7 @@ function agregarTweet(e) {
   const tweet = document.getElementById('tweet').value;
   // console.log(e.target.children[1].value); // tambien accedemos de esta forma
 
-  // boton de eliminar
-  const botonBorrar = document.createElement('a');
-  botonBorrar.classList.add('borrar-tweet');
-  botonBorrar.innerText = 'x';
-
-  // creamos el elemnto
-  const li = document.createElement('li');
-  li.innerText = tweet;
-  // agregamos el boton de borrar al tweet
-  li.appendChild(botonBorrar);
-  // agregamos el tweet
-  listaTweets.appendChild(li);
+  appendTweetToList(tweet);
 
   // agregar a localstorage
   agregarTweetALocalStorage(tweet);
@@ -58,19 +47,23 @@ function borrarTweet(e) {
 function localStorageListo() {
   let tweets = obtenerTweetsLocalStorage();
   tweets.forEach(function (tweet) {
-    // boton de eliminar
-    const botonBorrar = document.createElement('a');
-    botonBorrar.classList.add('borrar-tweet');
-    botonBorrar.innerText = 'x';
-
-    // creamos el elemnto
-    const li = document.createElement('li');
-    li.innerText = tweet;
-    // agregamos el boton de borrar al tweet
-    li.appendChild(botonBorrar);
-    // agregamos el tweet
-    listaTweets.appendChild(li);
+    appendTweetToList(tweet);
   });
+}
+
+function appendTweetToList(tweet) {
+  // boton de eliminar
+  const botonBorrar = document.createElement('a');
+  botonBorrar.classList.add('borrar-tweet');
+  botonBorrar.innerText = 'x';
+
+  // creamos el elemnto
+  const li = document.createElement('li');
+  li.innerText = tweet;
+  // agregamos el boton de borrar al tweet
+  li.appendChild(botonBorrar);
+  // agregamos el tweet
+  listaTweets.appendChild(li);
 }
 
 //agrega tweet a localstorage
