@@ -30,3 +30,5 @@ let url =
       console.log('Disculpa :-('),
       'stop.html'); // ponemos multiples instrucciones y el ultimo que esta separado por comas es el valor que se devuelve
 console.log(url); // https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator
+
+// recuerda que si usas ifelse y mas de dos condiciones complen, no se van a ejecuar todas sino solo la primera que cumpla la condicion
